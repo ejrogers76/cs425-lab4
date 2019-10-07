@@ -17,7 +17,20 @@ var Lab4 = ( function() {
              */
 
             // INSERT YOUR CODE HERE
-
+            
+            var input = $("#input").val();
+            var rateList = rates["Rates"];
+            var out = "<p>";
+            for (var r in rateList) {
+                out = out + r + ": ";
+                out = out + (input * rateList[r]).toFixed(2) + "\n";
+                out = out + "</p>";
+                
+            }
+            
+            out = out + "<p> Based on " + rates["Date"] + " Exchange Rates. </p>";
+            $("#output").html(out);
+            
         },
         
         getConversion: function() {

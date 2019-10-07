@@ -106,7 +106,9 @@ public class Rates {
             /* Create JSON Containers */
             
             JSONObject json = new JSONObject();
-            JSONObject rates = new JSONObject();            
+            JSONObject rates = new JSONObject();
+            
+            row = iterator.next();
             
             /* 
              * Add rate data to "rates" container and add "date" and "base"
@@ -117,7 +119,17 @@ public class Rates {
              * *** INSERT YOUR CODE HERE ***
              */
             
-            json.put("rates", rates);
+            while(iterator.hasNext()) {
+                row = iterator.next();
+                rates.put(row[1], row[2]);
+            }
+            
+            json.put("Rates", rates);
+            json.put("Date", "2019-10-04");
+            json.put("Base", "USD");
+            
+            
+            System.err.println(JSONValue.toJSONString(rates));
             
             /* Parse top-level container to a JSON string */
             
